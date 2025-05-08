@@ -39,3 +39,28 @@ void primsalgo(vector<vector<pair<int, int>>> adj, int v)
         }
 }
 
+
+
+int main()
+{
+
+    int v, e;
+    cout << "Enter the number of vertices: ";
+    cin >> v;
+    cout << "Enter the number of edges: ";
+    cin >> e;
+
+    vector<vector<pair<int, int>>> adjList(v);
+
+    cout << "Enter the edges in the format: u v weight (0-based indexing)" << endl;
+    for (int i = 0; i < e; i++)
+    {
+        int u, v1, w;
+        cin >> u >> v1 >> w;
+        adjList[u].push_back({w, v1});
+        adjList[v1].push_back({w, u}); // since it's an undirected graph
+    }
+
+    primsalgo(adjList, v);
+    return 0;
+}
